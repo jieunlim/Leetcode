@@ -1,4 +1,4 @@
-#T: O(nm), S: O(mn)
+#T: O(nm), S: O(1)
 class Solution:
     def numIslands(self, grid: List[List[str]]) -> int:
         res = 0
@@ -21,7 +21,7 @@ class Solution:
                     dfs(i, j)
         return res
         
-#T: O(nm), S: O(mn)
+#T: O(nm), S: O(1)
 class Solution2:
     def numIslands(self, grid: List[List[str]]) -> int:
         res = 0
