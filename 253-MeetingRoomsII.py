@@ -41,5 +41,18 @@ class Solution2:
             heapq.heappush(room, i[1])
         return len(room)
  
-      
+# Same but simple and clean
+
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        room = []
+        intervals.sort(key = lambda x: x[0])
+        
+        for start, end in intervals:
+           
+            if room and room[0] <= start:
+                heapq.heappop(room) # O(logn)
+            
+            heapq.heappush(room, end)  # O(logn)
+        return len(room)
       
