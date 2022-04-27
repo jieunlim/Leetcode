@@ -1,0 +1,42 @@
+
+class Solution:
+#TLE
+    def uniqueLetterString2(self, s: str) -> int:
+        sol = 0
+        sub = []
+        for i in range(len(s)):
+            for j in range(i, len(s)):
+                sub.append(s[i:j+1])
+                  
+                    
+        for substr in sub:
+            m = Counter(substr)  
+            for ch in m:
+                if m[ch] == 1:
+                    sol += 1
+                            
+        return sol
+        
+        
+        
+        
+        
+   def uniqueLetterString(self, s: str) -> int:
+        res = 0
+        if not s or len(s)==0: return res
+        #ASCII 0~127 (A: #65)
+        showLastPosition = [0] * 128 # where was the last position of x
+        contribution = [0] * 128 #how many number was added with x
+        
+        cur = 0
+        
+        for i, ch in enumerate (s, 1):
+            
+            x = ord(ch)
+            cur -= contribution[x]
+            contribution[x] = i - showLastPosition[x]
+            cur += contribution[x]
+            showLastPosition[x] = i 
+            res += cur
+            
+        return res
