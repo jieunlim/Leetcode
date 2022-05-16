@@ -24,3 +24,32 @@ class Solution:
             else: helper(r, c, path)
                 
         return -1
+
+    
+class Solution2:
+    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+        rows = len(grid)-1
+        cols = len(grid[0])-1
+        
+        if grid[0][0] or grid[rows][cols]:
+            return -1
+        
+        dir = [(-1,-1),(-1,0),(0,-1),(1,1),(1,0),(0,1),(1,-1),(-1,1)]
+        q = deque()
+        q.append([0,0])
+        
+        cnt = 0
+        
+        while q:
+            cnt+=1
+            size = len(q)
+            for i in range(size):
+                r, c = q.popleft()
+                if r == rows and c == cols: return cnt
+                for row, col in dir:
+                    new_row, new_col = r+row, c+col
+                    if 0<=new_row<=rows and 0<=new_col<=cols and grid[new_row][new_col]==0:
+                        q.append((new_row, new_col))
+                        grid[new_row][new_col] = 1
+                
+        return -1
