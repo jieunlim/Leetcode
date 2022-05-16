@@ -26,4 +26,18 @@ class Solution:
         return sol
         
         
+
+class Solution2:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root: return
+        level = [root]
+        sol = [root.val]
+        while level:
+            cur = []
+            for node in level:
+                if node.left: cur.append(node.left)
+                if node.right: cur.append(node.right)
+            if cur: sol.append(cur[-1].val)
+            level = cur
+        return sol
         
