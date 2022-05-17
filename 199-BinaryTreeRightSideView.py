@@ -40,4 +40,16 @@ class Solution2:
             if cur: sol.append(cur[-1].val)
             level = cur
         return sol
+    
+ class Solution3:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        sol = []
+        def helper(node, l):
+            if not node: return
+            if l == len(sol): sol.append(node.val)
+            
+            helper(node.right, l+1)
+            helper(node.left, l+1)
+        helper(root, 0)
+        return sol
         
