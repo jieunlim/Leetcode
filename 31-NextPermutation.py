@@ -1,3 +1,4 @@
+#T: O(N), S: O(1)
 class Solution1:
     def nextPermutation(self, nums: List[int]) -> None:
               
