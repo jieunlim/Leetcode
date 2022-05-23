@@ -30,28 +30,33 @@ class Solution1:
   
 class Solution2:
     def nextPermutation(self, nums: List[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        i = j = len(nums)-1
         
-        #find peak
+        n = len(nums)-1
+        peak = -1
+        second_peak = -1
         
-        while i>0 and nums[i-1] >= nums[i]:
-            i-=1
-        if i == 0:
-            return nums.reverse()
+        # find a peak
         
-        #find a bigger value, then swap
-        print(i)
-        
-        k = i-1
-        
-        while j>=0 and nums[k]>=nums[j]:
-            j-=1
-        nums[k], nums[j] = nums[j], nums[k]
-        
-        #reverse remaining
-        
-        nums[k+1:] = sorted(nums[k+1:])
+        for i in range(n-1, -1, -1):
             
+            if nums[i]<nums[i+1]: 
+                peak = i
+                break
+ 
+        if peak == -1: 
+            nums.reverse() 
+            return
+
+        # find next bigger value
+        
+        for j in range(n, peak, -1):
+            
+            if nums[j] > nums[peak]:
+                second_peak = j
+                break
+                
+        nums[peak], nums[second_peak] = nums[second_peak], nums[peak]
+        
+        # reverse remaining 
+        print(nums)
+        nums[peak+1:] = sorted(nums[peak+1:])
