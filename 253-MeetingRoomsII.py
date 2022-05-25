@@ -20,7 +20,9 @@ class Solution:
             sol += sorted_m[r]
             maxroom = max(maxroom, sol)
                 
-        return maxroomclass Solution:
+        return maxroomclass 
+    
+
 
 # time O(nlgn), space O(n)      
 class Solution2:
