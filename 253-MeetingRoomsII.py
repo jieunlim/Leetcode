@@ -20,7 +20,7 @@ class Solution:
             sol += sorted_m[r]
             maxroom = max(maxroom, sol)
                 
-        return maxroomclass 
+        return maxroom
     
 
 
