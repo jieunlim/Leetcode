@@ -51,6 +51,7 @@ class Solution:
             return total
             
         def helper(root):
+            if not root: return
             if low < root.val < high:
                 self.total += root.val
             
