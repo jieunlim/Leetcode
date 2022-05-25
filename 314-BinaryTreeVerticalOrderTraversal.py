@@ -27,8 +27,10 @@ class Solution:
 
             if node.right:
                 queue.append([node.right, col+1])
-
-        for i in range(mincol, mincol + len(dic)):
-            sol.append(dic[i])
+                
+        return [dic[key] for key in range(mincol, mincol + len(dic)]
+                                          
+#         for i in range(mincol, mincol + len(dic)):
+#             sol.append(dic[i])
             
-        return sol
+#         return sol
