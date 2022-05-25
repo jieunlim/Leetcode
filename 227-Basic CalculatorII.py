@@ -58,4 +58,25 @@ class Solution2:
 
 
         return sum(stack)
+  
+class Solution2:
+    def calculate(self, s: str) -> int:
+        stack = []
         
+        def operation(sign, num):
+            if sign=='+': stack.append(num)
+            elif sign=='-': stack.append(-num)
+            elif sign=='*':stack.append(stack.pop()*num)
+            elif sign=='/':stack.append(int(stack.pop()/num))
+        
+        
+        cur, sign = 0, '+'
+        for i in range(len(s)):
+            if s[i].isdigit():
+                cur = 10*cur + int(s[i])
+            elif s[i] in '+-*/':
+                operation(sign, cur)
+                sign, cur = s[i], 0
+        operation(sign, cur)
+        
+        return sum(stack)
