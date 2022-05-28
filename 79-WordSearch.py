@@ -26,6 +26,37 @@ class Solution:
                     
                      
         return False
+    
+class Solution2:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        
+        def helper(i, r, c):
+            if i == len(word): return True
+            if r <0 or r>=m or c<0 or c>=n or board[r][c]!= word[i]:
+                return False
+            board[r][c] = '#'
+            
+            dir = [(1,0), (-1,0), (0,1), (0,-1)]
+            
+            for dr, dc in dir:
+                if helper(i +1, r+ dr, c + dc):
+                    return True
+            board[r][c] = word[i]
+            
+            return False
+        
+        
+        if not board or not board[0] or not word: return False
+        
+        
+        m, n = len(board), len(board[0])
+        
+        for r in range(m):
+            for c in range(n):
+                if board[r][c]==word[0]:
+                    if helper(0, r, c):
+                        return True
+        return False
 
 board=[
   ['A','B','C','E'],
