@@ -47,6 +47,31 @@ def demolition(matrix):
                     queue.append((nx, ny))
     return -1
 
+from collections import deque
+def demolition2(matrix):
+    m, n = len(matrix), len(matrix[0])    
+    direction = [(1,0), (-1,0), (0,1),(0,-1)]
+    q = deque([])
+    q.append((0, 0, 0)) # r, c, step
+    seen = set()
+    
+    while q:
+        r, c, step = q.popleft()
+        if matrix[r][c] == 9: return step
+        if matrix[r][c] == 1:
+            for x, y in direction:
+                nr, nc = r+x, c+y
+                if 0<=nr<m and 0<=nc<n and (nr, nc, step+1) not in seen:
+                    seen.add((nr, nc, step+1))
+                    q.append((nr, nc, step+1))
+    
+
+    return -1
+
+
+
+
+
 matrix = [
 [1, 0, 0],
 [1, 0, 0],
