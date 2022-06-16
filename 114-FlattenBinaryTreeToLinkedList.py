@@ -21,5 +21,7 @@ class Solution:
             root.right = root.left
             root.left = None
         
+       # We need to return the "rightmost" node after we are
+       # done wiring the new connections.
         return r if r else l
       
