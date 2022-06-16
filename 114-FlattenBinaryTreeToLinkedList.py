@@ -25,3 +25,29 @@ class Solution:
        # done wiring the new connections.
         return r if r else l
       
+
+class Solution2:
+    def flatten(self, root: Optional[TreeNode]) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        if not root: return None
+        
+        node = root
+        while node:
+            if node.left:
+                
+                rightmost = node.left
+                
+                 # Find the rightmost node
+                while rightmost.right: 
+                    rightmost = rightmost.right
+                
+                 # rewire the connections
+                rightmost.right = node.right
+                node.right = node.left
+                node.left = None
+                
+             # move on to the right side of the tree
+            node = node.right
+            
