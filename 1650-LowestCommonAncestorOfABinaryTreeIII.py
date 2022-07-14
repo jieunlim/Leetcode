@@ -23,4 +23,20 @@ class Solution:
             if node2 in dic: return node2
             node2 = node2.parent
             
+ class Solution2:
+    def lowestCommonAncestor(self, p: 'Node', q: 'Node') -> 'Node':
+        anc = set()
+        anc.add(p)
         
+        while p.parent:
+            
+            anc.add(p.parent)
+            p = p.parent
+        
+
+        while q:
+            if q in anc: return q
+            q = q.parent
+                
+   
+            
