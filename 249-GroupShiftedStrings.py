@@ -15,4 +15,4 @@ class Solution:
         # for item, values in dic.items():
         #     sol.append(values)
         # return sol
-        return list(dic.values())
+        return list(dic.values()) # [value for key, value in dic.items()]
