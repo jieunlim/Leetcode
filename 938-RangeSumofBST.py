@@ -44,15 +44,15 @@ class Solution:
             self.inOrderT(root.right)
 
     #DFS-recursion
-    def rangeSumBST(self, root, low, high):
-        
+class Solution:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
         self.total = 0
         if not root:
             return total
             
         def helper(root):
             if not root: return
-            if low < root.val < high:
+            if low <= root.val <= high:
                 self.total += root.val
             
             if root.val > low:
