@@ -27,3 +27,16 @@ class Solution:
             for i in sublist:
                 sol.append(i)
         return sol[::-1][:k]
+    
+# O(n) for counter + O(nlogn) for build heap
+#S: O(n)
+class Solution2:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        res = []
+        dic = Counter(nums)
+        max_heap = [(-val, key) for key, val in dic.items()]
+        heapify(max_heap)
+        print(max_heap)
+        for i in range(k):
+            res.append(heappop(max_heap)[1])
+        return res
