@@ -44,15 +44,17 @@ class Solution2:
 
         return sol
     
- class Solution3:
+class Solution3:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        sol = []
-        def helper(node, l):
-            if not node: return
-            if l == len(sol): sol.append(node.val)
+        if not root: return []
+        ans = []
+        def helper(node, level):
+            if len(ans)==level:
+                ans.append(node.val)
+            if node.right:
+                helper(node.right, level +1)
+            if node.left:
+                helper(node.left, level+1)
             
-            helper(node.right, l+1)
-            helper(node.left, l+1)
         helper(root, 0)
-        return sol
-        
+        return ans
