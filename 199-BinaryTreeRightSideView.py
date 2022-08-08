@@ -29,16 +29,19 @@ class Solution:
 
 class Solution2:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
-        if not root: return
-        level = [root]
+        if not root: return []
         sol = [root.val]
-        while level:
-            cur = []
-            for node in level:
-                if node.left: cur.append(node.left)
-                if node.right: cur.append(node.right)
-            if cur: sol.append(cur[-1].val)
-            level = cur
+        queue = deque([(root, 0)])
+        while queue:
+            curlevel = []
+            for node, level in queue:
+                if node.left:
+                    curlevel.append((node.left, level+1))
+                if node.right:
+                    curlevel.append((node.right, level+1))
+            if curlevel: sol.append(curlevel[-1][0].val)
+            queue = curlevel
+
         return sol
     
  class Solution3:
