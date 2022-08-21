@@ -1,26 +1,21 @@
 #T: O(NlogN), S:O(N)
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        room = 0
+        dic = defaultdict(int)
+        res = 0
         
-        maxroom = 0
-        sol = 0
-        n = len(intervals)
-        m = defaultdict(int)
+        for start, end in intervals:
+            dic[start] += 1
+            dic[end] -= 1
         
-        if len(intervals) == 1 : return 1
+        sorted_dict = dict(sorted(dic.items()))
         
-        for i in range(n):
-            start = intervals[i][0]
-            end = intervals[i][1]
-            m[start]+= 1
-            m[end]-= 1
-        
-        sorted_m = dict(sorted(m.items()))
-        for r in sorted_m:
-            sol += sorted_m[r]
-            maxroom = max(maxroom, sol)
-                
-        return maxroom
+        for time in sorted_dict:
+            room += sorted_dict[time]
+            res = max(res, room)
+            
+        return res
     
 
 
