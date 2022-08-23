@@ -33,4 +33,37 @@ class Solution:
             res.append(level)
             
         return res
-            
+    
+    
+class Solution2:
+    def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
+    
+
+    #   Similar to regular BFS using queue, 
+    #   but traverse level by level.
+    #   At each level, switch direction of adding nodes to 
+    #   level_res.  
+    
+        if not root:  return []
+    
+        res = []
+        queue = deque([root])
+        direction = 1
+        while queue:
+            level = deque()
+            for _ in range(len(queue)):
+                node = queue.popleft()
+                if direction == 1: 
+                    level.append(node.val)
+                else: level.appendleft(node.val)
+                if node.left:    queue.append(node.left)
+                if node.right:   queue.append(node.right)
+
+            #print(f"res: {res}, node:{node.val}, direction:{direction}, level:{level} ")
+
+            res.append(list(level))
+            direction *= -1
+
+        return res
+  
+
