@@ -26,3 +26,31 @@ class Solution:
         return mat
         
         
+
+class Solution2:
+    def updateMatrix(self, mat: List[List[int]]) -> List[List[int]]:
+        m = len(mat)
+        n = len(mat[0])
+        queue = deque([])
+        dirs = [(1, 0), (-1, 0), (0, 1), (0, -1)]
+        
+        for r in range(m):
+            for c in range(n):
+                if mat[r][c] == 1:
+                    mat[r][c] = -1
+                else: 
+                    queue.append((r, c))
+                    
+        while queue:
+            r, c = queue.popleft()
+            
+            for x, y in dirs:
+                nr = x + r
+                nc = y + c
+                
+                if 0 <= nr < m and 0 <= nc < n and mat[nr][nc] == -1:
+                    
+                    mat[nr][nc] = mat[r][c] + 1
+                    queue.append((nr, nc))
+                    
+        return mat
