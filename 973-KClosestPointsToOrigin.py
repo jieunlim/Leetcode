@@ -1,8 +1,23 @@
-#T: O(NlogN), S: O(N)
+#T: O(NlogK), S: O(K)
 
 import heapq
 
+
+import heapq
 class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        res = []
+        h = []
+        for i, point in enumerate (points):
+            heappush(h,( -1 * (point[0]**2 + point[1]**2), i))
+            if len(h)>k:
+                heappop(h)
+        for _ in range(k):
+            res.append(points[heappop(h)[1]])
+        
+        return res
+
+class Solution1:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         
         sol = []
@@ -17,7 +32,7 @@ class Solution:
         return sol
 
 
-class Solution1:
+class Solution2:
     def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
         
         sol = []
