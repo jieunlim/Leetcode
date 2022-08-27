@@ -1,3 +1,24 @@
+# S, T: O(n) for counter + O(nlogk) for build heap
+
+from collections import Counter
+from heapq import heapify, heappop
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        cnt = Counter(nums)
+        heap = []
+        res = []
+        for key, val in cnt.items():
+            heappush(heap, (val, key))
+            if len(heap)>k:
+                heappop(heap)
+        
+        
+        for _ in range(k):
+            res.append(heappop(heap)[1])
+            
+        return res
+
+
 #T: O(nlogn), O(n + k)
 from collections import Counter
 class Solution:
@@ -39,4 +60,20 @@ class Solution2:
         print(max_heap)
         for i in range(k):
             res.append(heappop(max_heap)[1])
+        return res
+    
+from collections import Counter
+from heapq import heapify, heappop
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        cnt = Counter(nums)
+        heap = []
+        res = []
+        for key, val in cnt.items():
+            heappush(heap, (-val, key))
+        
+        
+        for _ in range(k):
+            res.append(heappop(heap)[1])
+            
         return res
