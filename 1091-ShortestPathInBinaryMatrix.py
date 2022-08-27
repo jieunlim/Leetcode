@@ -1,7 +1,31 @@
 
-
-
 class Solution:
+    def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
+        n = len(grid)
+        dirs = [(1,0), (-1,0), (0,1), (0,-1), (1,1), (-1,-1), (-1,1), (1,-1)]
+        res = float(inf)
+        
+        if grid[0][0]==1: return -1
+        queue = deque([(0,0,1)]) #r, c, length
+        
+        while queue:
+            r, c, length = queue.popleft()
+            if r == n-1 and c == n-1: 
+                return length
+            
+
+            for x,y in dirs:
+                nr = x+r
+                nc = y+c
+                if 0<=nr<n and 0<=nc<n and grid[nr][nc] == 0:
+                    grid[nr][nc] = 1
+                    queue.append((nr,nc, length + 1))
+                    
+        
+                
+        return -1
+
+class Solution2:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         rows = len(grid)-1
         cols = len(grid[0])-1
@@ -28,7 +52,7 @@ class Solution:
         return -1
     
     
-class Solution1:
+class Solution3:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         rows = len(grid)
         cols = len(grid[0])
@@ -48,7 +72,7 @@ class Solution1:
         return -1
     
     
-class Solution2:
+class Solution4:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         rows = len(grid)-1
         cols = len(grid[0])-1
