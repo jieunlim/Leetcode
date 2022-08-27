@@ -1,4 +1,14 @@
+
+
 """
+DFS로 하기, (left, node, right)
+1. head 없으면 넣어주기
+2. prev있으면 prev.right = node
+3. node.left = prev
+4. prev = node
+
+head - prev(마지막노드) 연결
+
 # Definition for a Node.
 class Node:
     def __init__(self, val, left=None, right=None):
