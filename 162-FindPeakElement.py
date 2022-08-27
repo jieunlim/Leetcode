@@ -14,7 +14,7 @@ class Solution:
         return l # r도 상관 없음
     
     
-class Solution:
+class Solution2:
     def findPeakElement(self, nums: List[int]) -> int:
         l, r = 0, len(nums)-1
         if len(nums)==1: return 0
@@ -29,3 +29,19 @@ class Solution:
             elif nums[m] < nums[m+1]: l = m + 1
             else: r = m -1
         
+class Solution3:
+    def findPeakElement(self, nums: List[int]) -> int:
+        l, r = 0, len(nums)-1
+        if len(nums)==1: return 0
+        #if len(nums)==2: return 1 if nums[0]<nums[1] else 0
+        
+        while l < r:
+            
+            m = l + (r - l )//2
+            if (m == 0 or nums[m-1] < nums[m]) and ( m == len(nums)-1 or nums[m] > nums[m+1]): 
+                return m
+            
+            elif nums[m] < nums[m+1]: l = m + 1
+            else: r = m -1
+        
+        return r
