@@ -7,3 +7,13 @@ class Solution:
         right = self.lowestCommonAncestor(root.right, p, q)
         if left and right: return root
         else: return left or right
+
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root: return 
+
+        l = self.lowestCommonAncestor(root.left, p, q)
+        r = self.lowestCommonAncestor(root.right, p, q)
+
+        if l and r or (root in [p, q]) : return root
+        else: return l or r
