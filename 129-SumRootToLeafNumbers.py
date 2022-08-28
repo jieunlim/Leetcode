@@ -1,4 +1,4 @@
-# Recursive: O(n) / O(h)
+#Solution 1 Recursive: O(n) / O(h)
 class Solution1:
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
         if not root: return 0
