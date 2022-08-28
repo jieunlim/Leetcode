@@ -6,7 +6,7 @@
 #         self.left = left
 #         self.right = right
 
-# 987 - need sort, deque cannot be sorted, so used list instead of deque.
+# Hard - 987
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root: return
