@@ -15,3 +15,25 @@ class Solution:
     
         helper(root)
         return d
+    
+class Solution2:
+    def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
+        self.d = 0
+        if not root: return 0
+        
+        def helper(node):
+            if not node: return 0
+            first = second = 0
+            for n in (node.left, node.right):
+                depth = helper(n)
+                if depth > first:
+                    first, second = depth, first
+                elif depth > second:
+                    second = depth
+                    
+
+            self.d = max(self.d, first + second)
+            return first + 1
+        
+        helper(root)
+        return self.d
