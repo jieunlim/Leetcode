@@ -2,7 +2,7 @@ class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
         d = 0
         def helper(node):
-            nonlocal d
+            nonlocal d # or self.d
             
             if not node: return 0
             
