@@ -10,13 +10,12 @@
 class Solution:
     def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         if not root: return
-        queue = deque([])
-        queue.append((root,0))
+        queue = deque([(root, 0)])
         dic = defaultdict(list)
         mincol = 0
         while queue:
             level = []
-            for node, col in queue:
+            for node, col in queue: 
                 dic[col].append(node.val)
                 if node.left:
                     level.append((node.left, col-1))
@@ -29,7 +28,6 @@ class Solution:
         for i in range(mincol, mincol + len(dic)):
             res.append(dic[i])
         return res
-
 
 from collections import deque
 class Solution:
