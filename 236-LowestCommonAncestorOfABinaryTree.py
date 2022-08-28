@@ -17,3 +17,20 @@ class Solution:
 
         if l and r or (root in [p, q]) : return root
         else: return l or r
+        
+class Solution:
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if not root: return 
+        
+        def dfs(node):
+            if not node: return
+           # if node.val == p.val or node.val == q.val: return node 
+
+                
+            l = dfs(node.left)
+            r = dfs(node.right)
+            
+            if l and r or (node in [p, q]) : return node
+            else: return l or r
+        
+        return dfs(root)
