@@ -6,6 +6,30 @@
 #         self.left = left
 #         self.right = right
 
+#
+class Solution:
+    def verticalOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root: return
+        queue = deque([])
+        queue.append((root,0))
+        dic = defaultdict(list)
+        mincol = 0
+        while queue:
+            level = []
+            for node, col in queue:
+                dic[col].append(node.val)
+                if node.left:
+                    level.append((node.left, col-1))
+                    mincol = min(mincol, col-1)
+                if node.right:
+                    level.append((node.right, col+1))
+            queue = level
+        res = []
+        
+        for i in range(mincol, mincol + len(dic)):
+            res.append(dic[i])
+        return res
+
 
 from collections import deque
 class Solution:
