@@ -78,6 +78,26 @@ class Solution2:
                     stack.append(node.right)
         return sol 
     
+class Solution3:
+    def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
+        if not root: return
+        stack = [root]
+        res = 0
+        
+        while stack:
+            
+            node = stack.pop()
+            if not node: continue
+
+            if low <= node.val <= high:
+                res += node.val
+            if node.val > low:
+                stack.append(node.left)
+            if node.val < high:
+                stack.append(node.right)
+
+        return res
+    
 obj = Solution()
 arr = [ 5, 1, 6]
 arr = [10, 5, 15, 3, 7, None, 18]
