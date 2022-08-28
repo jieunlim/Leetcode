@@ -1,32 +1,30 @@
 # O(nlogn)
 # O(n)
 
-from collections import defaultdict, deque
 class Solution:
-    
     def verticalTraversal(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root: return []
-        queue = deque([(root, 0)])
+        
+        res = []
+        queue=deque([(root, 0)])
         dic = defaultdict(list)
         mincol = 0
         
         while queue:
-            cur = []
-            
-            for node, level in queue:
-                dic[level].append(node.val)
-        
+            level = []
+            for node, col in queue:
+                dic[col].append(node.val)
+                
                 if node.left:
-                    cur.append((node.left, level-1))
-                    mincol = min(mincol, level-1)
+                    level.append((node.left, col-1))
+                    mincol = min(mincol, col-1)
                 if node.right:
-                    cur.append((node.right, level+1))
-                cur.sort(key = lambda x: x[0].val)
-            queue = cur
-        sol = []
+                    level.append((node.right, col+1))
+            level.sort(key = lambda x: x[0].val)
+            queue = level
+            
         for i in range(len(dic)):
-            sol.append(dic[mincol + i])
-        return sol
+            res.append(dic[mincol + i])
+        return res
         
         
 
