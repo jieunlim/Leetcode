@@ -1,3 +1,4 @@
+# BFS
 class Solution:
     def largestValues(self, root: Optional[TreeNode]) -> List[int]:
         res = []
@@ -35,3 +36,23 @@ class Solution:
             queue = curlevel
             res.append(maxval)
         return res
+# DFS
+
+class Solution:
+    def largestValues(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        if not root: return []
+        
+        def helper(node, level):
+            if not node: return
+            if level == len(res): res.append(node.val)
+            else: 
+                res[level] = max(res[level], node.val)
+            helper(node.left, level+1)
+            helper(node.right, level+1)
+       
+        
+        helper(root, 0)
+        
+        return res
+                
