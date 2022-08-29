@@ -1,4 +1,27 @@
+
+
+
 #O(n), O(1) - no consider recursion stack
+
+class Solution:
+    def closestValue(self, root: Optional[TreeNode], target: float) -> int:
+        if not root: return 
+        self.res = root.val
+        self.diff = float(inf)
+        
+        def dfs(node):
+            if not node: return
+            
+            if abs(node.val - target) < self.diff:
+                self.diff = abs(node.val - target)
+                self.res = node.val
+            
+            if node.val > target: dfs(node.left)
+            else: dfs(node.right)
+                
+        dfs(root)
+        return self.res
+
 class Solution:
     def closestValue(self, root: Optional[TreeNode], target: float) -> int:
         self.mindiff = float(inf)
