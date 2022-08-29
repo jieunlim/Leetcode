@@ -35,6 +35,19 @@ class Solution:
             dfs(node.left, level+1)
         dfs(root, 0)
         return res
+    
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root: return []
+        res = []
+        def helper(node, level):
+            if level == len(res): res.append(node.val)
+            for child in (node.right, node.left):
+                if child:
+                    helper(child, level + 1)
+        helper(root, 0)
+        return res    
+    
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root:
