@@ -6,6 +6,23 @@
 #         self.left = left
 #         self.right = right
 #BFS, Level order - T:O(n), S: O(D) d: tree diameter to keep queue
+
+class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
+        if not root: return []
+        queue = deque([(root, 1)])
+        res = []
+        while queue:
+            for _ in range(len(queue)):
+                node, level = queue.popleft()
+                if node.left:
+                    queue.append((node.left, level+1))
+                if node.right:
+                    queue.append((node.right, level+1))
+            res.append(node.val)
+        return res
+    
+    
 class Solution:
     def rightSideView(self, root: Optional[TreeNode]) -> List[int]:
         if not root: return []
