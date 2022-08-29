@@ -1,5 +1,30 @@
 #T, S: O(f+s)
-
+class Solution:
+    def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
+        i = j = 0
+        res = []
+        if not firstList or not secondList: return res
+        
+        while i < len(firstList) and j < len(secondList):
+            
+            s1, e1 = firstList[i]
+            s2, e2 = secondList[j]
+            
+            if s1 > e2: j += 1
+            elif s2 > e1: i += 1
+            else: 
+            
+                start = max(s1, s2)
+                end = min(e1, e2)
+            
+                res.append([start, end])
+                
+                if e2 > e1: i += 1
+                else: j += 1
+                    
+        return res
+        
+    
 class Solution:
     def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
     
