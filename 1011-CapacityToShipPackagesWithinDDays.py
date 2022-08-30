@@ -1,3 +1,4 @@
+# binary search
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
         l, r = max(weights), sum(weights)
