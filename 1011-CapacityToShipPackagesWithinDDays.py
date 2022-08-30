@@ -1,5 +1,27 @@
 class Solution:
     def shipWithinDays(self, weights: List[int], days: int) -> int:
+        l, r = max(weights), sum(weights)
+        res = 0
+        
+        while l <= r:
+            m = l + (r - l)//2
+            cur = 0
+            need = 1
+            for w in weights:
+                cur += w
+                if cur > m:
+                    cur = w
+                    need += 1
+            if need > days:
+                l = m + 1
+            else:
+                r = m - 1
+                
+            
+        return l
+    
+class Solution:
+    def shipWithinDays(self, weights: List[int], days: int) -> int:
         left, right = max(weights), sum(weights)
         while left < right:
             mid = (left + right) //2
