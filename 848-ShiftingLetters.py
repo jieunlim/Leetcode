@@ -1,5 +1,15 @@
 # S, T: O(n)
 Tip: (ord('b') + ord('a')) % 26 + ord('a')
+    
+class Solution:
+    def shiftingLetters(self, s: str, shifts: List[int]) -> str:
+        res, shift = '', 0
+        for i in range(len(s)-1, -1, -1):
+            nc = chr((ord(s[i]) + shift + shifts[i] - ord('a')) % 26 + ord('a'))
+            res = nc + res    
+            shift += shifts[i]
+        return res
+    
 class Solution:
     def shiftingLetters(self, s: str, shifts: List[int]) -> str:
         ans, shift = "", 0
