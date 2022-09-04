@@ -1,3 +1,8 @@
+# return은 self.res 
+# dfs return은 left min, right max, n
+# n udate는 lmax < 노드 < rmin  (ln + rn + 1)
+
+
 class Solution:
     def largestBSTSubtree(self, root: Optional[TreeNode]) -> int:
         self.res = 0 
