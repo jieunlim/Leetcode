@@ -3,23 +3,23 @@
 Iterative
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
-        def is_same(r, s):
-            if not r and not s: return True
-            if not r or not s: return False
-            if r.val != s.val: return False
-            return is_same(r.left, s.left) and is_same(r.right, s.right)
+        if not root: return
+        
+        def is_same(n1, n2):
+            if not n1 and not n2: return True
+            if not n1 or not n2: return False
+            if n1.val != n2.val: return False
+            return is_same(n1.left, n2.left) and is_same(n1.right, n2.right)
         
         
         stack = [root]
         
         while stack:
             node = stack.pop()
-            
             if node.val == subRoot.val:
-                if is_same(node, subRoot): return True         
+                if is_same(node, subRoot): return True
             if node.left: stack.append(node.left)
             if node.right: stack.append(node.right)
-                
         return False
     
 Recursive
