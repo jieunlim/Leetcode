@@ -1,5 +1,27 @@
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        def is_same(r, s):
+            if not r and not s: return True
+            if not r or not s: return False
+            if r.val != s.val: return False
+            return is_same(r.left, s.left) and is_same(r.right, s.right)
+        
+        
+        stack = [root]
+        
+        while stack:
+            node = stack.pop()
+            
+            if node.val == subRoot.val:
+                if is_same(node, subRoot): return True         
+            if node.left: stack.append(node.left)
+            if node.right: stack.append(node.right)
+                
+        return False
+    
+
+class Solution:
+    def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         
         if not root: return False
         
