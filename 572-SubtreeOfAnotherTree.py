@@ -1,3 +1,6 @@
+#O(n)/O(n)
+
+Iterative
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         def is_same(r, s):
@@ -19,6 +22,7 @@ class Solution:
                 
         return False
     
+Recursive
 
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
