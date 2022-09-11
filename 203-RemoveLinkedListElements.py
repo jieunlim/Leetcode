@@ -1,3 +1,4 @@
+T: O(n), S: O(1)
 class Solution:
     def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
         dummy = ListNode()
