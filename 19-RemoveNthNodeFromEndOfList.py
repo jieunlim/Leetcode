@@ -1,3 +1,4 @@
+#T: O(n) - One Pass, S: O(1)
 class Solution:
     def removeNthFromEnd(self, head: Optional[ListNode], n: int) -> Optional[ListNode]:
         
