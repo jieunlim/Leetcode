@@ -14,3 +14,21 @@ class Solution:
                 prev = cur
                 cur = cur.next
         return dummy.next
+    
+    
+# without dummy Node
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        prev, cur = None, head
+        
+        while cur:
+            if cur.val == val:
+                if prev:
+                    prev.next = cur.next
+                else:
+                    head = head.next
+            else:
+                prev = cur    
+            cur = cur.next
+            
+        return head
