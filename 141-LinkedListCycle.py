@@ -21,6 +21,22 @@ class Solution:
                 return True
        
         return False
+    
+    
+
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        if not head or not head.next: return False
+        slow = head
+        fast = head.next
+        while fast and fast.next and slow != fast:
+            slow = slow.next
+            fast = fast.next.next
+        if slow == fast: return True
+        if not fast : return False
+        
+        
+        
+        
     def hasCycle2(self, head):
         #s: o(n)
         #t: o(n)
