@@ -3,6 +3,8 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         
+        # get the longest palindrome, l, r are the middle indexes   
+        # from inner to outer
         def helper(l, r):
             while l>=0 and r<len(s) and s[l] == s[r]:
                 l -= 1
@@ -13,9 +15,9 @@ class Solution:
         
         for i in range(len(s)):
             # res = max(helper(i, i), helper(i, i + 1), res, key=len)
-            if len(helper(i, i)) > len(res):
+            if len(helper(i, i)) > len(res):  # odd case, like "aba"
                 res = helper(i, i)
-            if len(helper(i, i+1)) > len(res):
+            if len(helper(i, i+1)) > len(res): # even case, like "abba"
                 res = helper(i, i+1)
         return res
 
