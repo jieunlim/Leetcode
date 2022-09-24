@@ -1,3 +1,14 @@
+#T: O(n), S: O(1)
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        minprice = prices[0]
+        maxprofit = float('-inf')
+        
+        for price in prices:
+            minprice = min(minprice, price)
+            maxprofit = max(maxprofit, price - minprice)
+        return maxprofit
+
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
         minprice = prices[0]
