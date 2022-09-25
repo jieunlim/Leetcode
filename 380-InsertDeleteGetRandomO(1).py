@@ -1,3 +1,32 @@
+
+class RandomizedSet:
+
+    def __init__(self):
+        self.stack = []
+        self.dic = {}
+
+    def insert(self, val: int) -> bool:
+        if val in self.dic: return False
+        self.stack.append(val)
+        self.dic[val] = len(self.stack)-1
+        return True
+
+    def remove(self, val: int) -> bool: # id delete 2: stack = [1,2,3], dic = {1:0, 2:1, 3:2}
+        if not val in self.dic: return False
+        idx = self.dic[val] #idx = 1
+        self.stack[idx] = self.stack[-1]
+        self.dic[self.stack[idx]]=idx 
+        del self.dic[val]
+        self.stack.pop()
+        return True
+
+    def getRandom(self) -> int:
+        #n = random.randint(0,len(self.stack)-1)
+        #return self.stack[n]
+        return random.choice(self.stack)
+    
+    
+
 class RandomizedSet1: # GetRandom: O(n)
 
     def __init__(self):
