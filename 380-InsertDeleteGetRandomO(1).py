@@ -1,4 +1,4 @@
-
+#O(1)
 class RandomizedSet:
 
     def __init__(self):
