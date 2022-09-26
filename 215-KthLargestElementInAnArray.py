@@ -1,4 +1,5 @@
-#Quick Select, T: avg-O(n)
+#Quick Select, T: avg-O(n), S: O(1)
+
 from heapq import heappop
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
