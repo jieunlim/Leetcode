@@ -1,6 +1,5 @@
 #Quick Select, T: avg-O(n), S: O(1)
 
-from heapq import heappop
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         #k번째로 큰거 : len(nums) - k 번째로 작은거
@@ -18,12 +17,12 @@ class Solution:
         #rightmost: pivot
         def partition(l, r):
             p = l
-            for i in range(l,r):
-                if nums[i]<=nums[r]:
-                    nums[i], nums[p] = nums[p], nums[i]
+            while l < r:
+                if nums[l] < nums[r]:
+                    nums[l], nums[p] = nums[p], nums[l]
                     p += 1
-            nums[p],nums[r]=nums[r],nums[p]
-            
+                l += 1
+            nums[p], nums[r] = nums[r], nums[p]
             return p
         
     
