@@ -1,3 +1,23 @@
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        def recur(right):
+            if right:
+                recur(right.next)
+                if right.val != self.left.val:
+                    self.res = False
+                self.left = self.left.next
+                
+            
+            
+        self.res = True
+        self.left = head
+        recur(head)
+        
+        return self.res
+        
+
+
+# O(n), O(1)
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -6,7 +26,7 @@ class ListNode:
 class Solution:
     def isPalindrome(self, head) -> bool:
         
-        #876
+        #876 find mid
         fast = head
         slow = head
         
@@ -14,7 +34,7 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
             
-        #206
+        #206 reverse
         prev = None
      
         
