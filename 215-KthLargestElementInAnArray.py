@@ -28,6 +28,34 @@ class Solution:
     
         return findKthSmallest(0, len(nums)-1)
 
+    
+    
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        def partition (nums, start, end): #Decreasing order
+            pivot = start
+            while start < end:
+                while start < end and nums[end] <= nums[pivot]:
+                    end-=1
+                while start < end and nums[pivot] <= nums[start]:
+                    start += 1
+          
+                nums[start], nums[end] = nums[end], nums[start]
+            nums[end], nums[pivot] = nums[pivot], nums[end]
+            return end
+        
+        def quicksort(nums, start, end):
+            p = partition(nums, start, end)
+            
+            if p == k-1:
+                return nums[p]
+            elif p < k-1:
+                return quicksort(nums, p+1, end)
+            else:
+                return quicksort(nums, start, p-1)
+        return quicksort(nums, 0, len(nums)-1)
+    
+    
 #Min heap: T: O(Nlogk), S: O(k) for heap
     
  """
