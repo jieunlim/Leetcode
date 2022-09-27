@@ -1,5 +1,52 @@
 #Quick Select, T: avg-O(n), S: O(1)
+        #1. func partition  
+        # pivot : start
+        # while start<end
+        # check if end is smaller than k and change end -= 1
+        
+        # check if start is bigger than k and change start += 1
+        # if stopped: swap start and end
+        # if out of while: swap end/start and pivot
+        # return end
+        
+        #2. quick_sort function(start, end):
+        # if p == k-1: return nums[p]
+        #elif p < k-1: function(p+1, end)
+        #else p > k+1: function(start, p-1)
+        
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
 
+        
+        def partition(start, end):
+            pivot = start
+            start = start + 1
+            while start <= end:
+                
+                if nums[pivot] < nums[end] and nums[pivot] > nums[start]:
+                    nums[start], nums[end] = nums[end], nums[start]
+                
+                elif nums[pivot] >= nums[end]:
+                    end -= 1
+                
+                elif nums[start] >= nums[pivot]:
+                    start += 1
+        
+            nums[end], nums[pivot] = nums[pivot], nums[end]
+            return end
+        
+        
+        def quick_sort(start, end):
+            p = partition(start, end)
+            if p == k-1: return nums[p]
+            elif p < k-1: return quick_sort(p+1, end)
+            else: return quick_sort(start, p-1)
+        
+        return quick_sort(0, len(nums)-1)
+        
+        
+        
+        
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
         #k번째로 큰거 : len(nums) - k 번째로 작은거
