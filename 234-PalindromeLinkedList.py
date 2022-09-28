@@ -16,6 +16,30 @@ class Solution:
         return self.res
         
 
+# O(n), O(1)   
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        
+#876 find mid
+        slow = fast = head
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+#206 reverse
+        prev = None
+            
+        while slow:
+            cur = slow
+            slow = slow.next
+            cur.next = prev
+            prev = cur
+        
+        while prev and head:
+            if prev.val != head.val: return False
+            prev = prev.next
+            head = head.next
+        
+        return True
 
 # O(n), O(1)
 class ListNode:
