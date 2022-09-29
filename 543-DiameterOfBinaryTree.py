@@ -1,3 +1,4 @@
+#124, 1522
 class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
         d = 0
