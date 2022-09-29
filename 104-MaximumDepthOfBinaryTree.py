@@ -26,3 +26,19 @@ class Solution:
                 if node.right: queue.append(node.right)
             level += 1
         return level
+    
+    
+from collections import deque
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if not root: return 0
+        queue = deque([(root, 1)])
+        res = 1
+        while queue:
+            node, level = queue.popleft()
+            res = max(res, level)
+            if node.left:
+                queue.append((node.left, level + 1))
+            if node.right:
+                queue.append((node.right, level + 1))
+        return res
