@@ -1,4 +1,7 @@
 #543
+Time: O(N)
+Space: O(N)
+    
 class Solution:
     def diameter(self, root: 'Node') -> int:
         """
@@ -24,4 +27,29 @@ class Solution:
             
         helper(root)
         return res
+   
+Time: O(N)
+Space: O(N)
+    
+class Solution:
+    def diameter(self, root: 'Node') -> int:
+        """
+        :type root: 'Node'
+        :rtype: int
+        """
         
+        self.maxD = 0
+        def dfs(node):
+            if not node or not node.children: 
+                return 0 if not node else 1
+            heap = []
+            for n in node.children:
+                depth = dfs(n)
+                heappush(heap, depth)
+                if len(heap) > 2:
+                    heappop(heap)
+            self.maxD = max(self.maxD, sum(heap))
+            return max(heap) + 1
+        
+        dfs(root)
+        return self.maxD
