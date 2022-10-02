@@ -1,3 +1,5 @@
+
+
 class Solution:
     def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
         dummy = ListNode()
@@ -72,7 +74,28 @@ class Solution:
         else:
             cur.next = l2
         return dummy.next
+      
+#23 ** Heap
+#Time: O(nlogk), Space: O(1) #O(2) for heap
+
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        heap = []
         
+        if not list1 and not list2: return 
+        elif not list1 or not list2: return list1 or list2
+        
+        heappush(heap, (list1.val, 0, list1))
+        heappush(heap, (list2.val, 1, list2))
+        
+        dummy = cur = ListNode()
+        while heap:
+            val, idx, node = heappop(heap)
+            cur.next = node
+            cur = cur.next
+            if node.next: heappush(heap, (node.next.val, idx, node.next))
+        return dummy.next
+            
 
 flist1 = ListNode(1)
 flist2 = ListNode(3)
