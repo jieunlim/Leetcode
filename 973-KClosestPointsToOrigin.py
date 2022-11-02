@@ -1,7 +1,17 @@
 #T: O(NlogK), S: O(K)
 
 import heapq
-
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        res = []
+        h = []
+        
+        for x, y in points:
+            heapq.heappush(h, (-1 * (x*x + y*y), x, y))
+            
+            if len(h) > k:
+                heapq.heappop(h)
+        return [(x, y) for _, x, y in h]
 
 import heapq
 class Solution:
