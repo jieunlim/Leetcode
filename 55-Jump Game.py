@@ -5,6 +5,8 @@ class Solution:
             if i + nums[i]>=idx:
                 idx = i
         return idx == 0
+
+    
 #Greedy T: O(n), S: O(1)
 
 class Solution:
